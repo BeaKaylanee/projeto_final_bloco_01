@@ -1,24 +1,27 @@
 package livro.model;
 
-import  livro.util.Cores;
+import livro.util.Cores;
+
 public abstract class Livros {
 
 	private String titulo;
 	private String autorLivro;
-	private int estoque;
+	protected int estoque;
 	private String categoriaLivro;
 	String nomeCliente;
 	private int tipo;
-	
-	public Livros(String titulo, String autorLivro, int estoque, String categoriaLivro, String nomeCliente, int tipo) {
+	protected int livrosEmprestados;
+
+	public Livros(String titulo, String autorLivro, int estoque, String categoriaLivro, String nomeCliente, int tipo,
+			int livrosEmprestados) {
 		this.titulo = titulo;
 		this.autorLivro = autorLivro;
 		this.estoque = estoque;
 		this.categoriaLivro = categoriaLivro;
 		this.nomeCliente = nomeCliente;
 		this.tipo = tipo;
+		this.livrosEmprestados = livrosEmprestados;
 	}
-
 
 	public String getTitulo() {
 		return titulo;
@@ -59,7 +62,7 @@ public abstract class Livros {
 	public void setNomeCliente(String nomeCliente) {
 		this.nomeCliente = nomeCliente;
 	}
-	
+
 	public int getTipo() {
 		return tipo;
 	}
@@ -68,6 +71,13 @@ public abstract class Livros {
 		this.tipo = tipo;
 	}
 
+	public int getLivrosEmprestados() {
+		return livrosEmprestados;
+	}
+
+	public void setLivrosEmprestados(int livrosEmprestados) {
+		this.livrosEmprestados = livrosEmprestados;
+	}
 
 	public boolean emprestar(int quantidade) {
 
@@ -83,20 +93,20 @@ public abstract class Livros {
 	public void devolucao(int quantidade) {
 		this.setEstoque(this.getEstoque() + quantidade);
 	}
-	
+
 	public void visualizar() {
 
 		String operacao = "";
 
 		switch (this.tipo) {
-			case 1:
-				operacao = "Registrar Empréstimo";
-				break;
-			case 2:
-				operacao = "Registrar Devolução";
-				break;
-			default:
-				operacao = "Operação Desconhecida";
+		case 1:
+			operacao = "Registrar Empréstimo";
+			break;
+		case 2:
+			operacao = "Registrar Devolução";
+			break;
+		default:
+			operacao = "Operação Desconhecida";
 		}
 
 		System.out.println(Cores.TEXT_BLUE_BRIGHT + "\n\n***********************************************************"
