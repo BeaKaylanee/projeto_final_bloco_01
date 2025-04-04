@@ -1,5 +1,6 @@
 package livro;
 
+import livro.model.CadastrarLivro;
 import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -10,9 +11,22 @@ public class Menu {
 
 	public static Scanner leia = new Scanner(System.in);
 
-	public static void  main(String[] args) {
+	public static void main(String[] args) {
 
-		int opcao;
+		int opcao, estoque, tipo;
+		String titulo, autorLivro, categoriaLivro, nomeCliente;
+
+		CadastrarLivro livro1 = new CadastrarLivro("O Senhor dos Anéis", "J.R.R. Tolkien", 10, "Fantasia", "Maria", "Cadastro", 1);
+		livro1.visualizar();
+		
+		 System.out.println("\nEmprestar Livro...");
+	        boolean emprestou = livro1.emprestar(3);
+	        System.out.println("Emprestou? " + emprestou);
+	        livro1.visualizar();
+
+	        System.out.println("\nDevolvendo 2 livros...");
+	        livro1.devolucao(2);
+	        livro1.visualizar();
 
 		while (true) {
 			System.out.println("_____________________________________________________________");
@@ -52,42 +66,47 @@ public class Menu {
 			switch (opcao) {
 			case 1:
 				System.out.println("Criar um catálogo de livros. ");
-				
+
+				System.out.println("Digite o título:");
+				titulo = leia.next();
+				System.out.println("Digite o autor:");
+				autorLivro = leia.next();
+
 				keyPress();
 				break;
 			case 2:
 				System.out.println("Listar todas os livros cadastrados.");
-				
+
 				keyPress();
 				break;
 			case 3:
 				System.out.println("Buscar um livro por código ou título.");
-				
+
 				keyPress();
 				break;
 			case 4:
 				System.out.println("Atualizar informações do livro.");
-				
+
 				keyPress();
 				break;
 			case 5:
 				System.out.println("Apagar Livros do Sistema.");
-				
+
 				keyPress();
 				break;
 			case 6:
 				System.out.println("Registrar empréstimos.");
-				
+
 				keyPress();
 				break;
 			case 7:
 				System.out.println("Digite seu nome: ");
-				
+
 				keyPress();
 				break;
 			case 8:
 				System.out.println("Transferir livro entre categoria ou seções. ");
-				
+
 				keyPress();
 				break;
 
